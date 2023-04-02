@@ -1,0 +1,70 @@
+#!/usr/bin/env php
+<?php
+
+chdir(dirname(__DIR__));
+require 'vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+use Doctrine\DBAL\DriverManager;
+use Doctrine\Migrations\Configuration\Connection\ExistingConnection;
+use Doctrine\Migrations\Configuration\Migration\ConfigurationArray;
+use Doctrine\Migrations\DependencyFactory;
+use Doctrine\Migrations\Tools\Console\Command;
+use Symfony\Component\Console\Application;
+
+$dbParams = [
+    'dbname' => $_ENV['MYSQL_BASE'],
+    'user' => $_ENV['MYSQL_USER'],
+    'password' => $_ENV['MYSQL_PASS'],
+    'host' => $_ENV['MYSQL_HOST'],
+    'driver' => 'pdo_mysql',
+];
+
+$connection = DriverManager::getConnection($dbParams);
+$connection->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
+
+$config = new ConfigurationArray([
+    'table_storage' => [
+        'table_name' => 'migrations',
+        'version_column_name' => 'version',
+        'version_column_length' => 191,
+        'executed_at_column_name' => 'executed_at',
+        'execution_time_column_name' => 'execution_time',
+    ],
+
+    'migrations_paths' => [
+        'Payment\Migrations' => __DIR__ . '/src/Payment/Migrations',
+    ],
+
+    'all_or_nothing' => true,
+    'transactional' => true,
+    'check_database_platform' => true,
+    'organize_migrations' => 'none',
+    'connection' => null,
+    'em' => null,
+]);
+
+$dependencyFactory = DependencyFactory::fromConnection($config, new ExistingConnection($connection));
+$schemaProvider = new \Payment\Migrations\Provider\PaymentDatabaseProvider();
+$dependencyFactory->setDefinition(\Doctrine\Migrations\Provider\SchemaProvider::class, static fn () => $schemaProvider);
+
+$cli = new Application('Doctrine Migrations');
+$cli->setCatchExceptions(true);
+
+$cli->addCommands(array(
+    new Command\DiffCommand($dependencyFactory),
+    new Command\DumpSchemaCommand($dependencyFactory),
+    new Command\ExecuteCommand($dependencyFactory),
+    new Command\GenerateCommand($dependencyFactory),
+    new Command\LatestCommand($dependencyFactory),
+    new Command\ListCommand($dependencyFactory),
+    new Command\MigrateCommand($dependencyFactory),
+    new Command\RollupCommand($dependencyFactory),
+    new Command\StatusCommand($dependencyFactory),
+    new Command\SyncMetadataCommand($dependencyFactory),
+    new Command\VersionCommand($dependencyFactory),
+));
+
+$cli->run();

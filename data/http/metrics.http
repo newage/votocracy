@@ -1,0 +1,7 @@
+GET http://{{host}}/metrics
+Accept: application/json
+Content-Type: application/vnd.api+json
+Cookie: XDEBUG_SESSION=PHPSTORM
+X-Request-Id: 123
+
+###

@@ -1,0 +1,10 @@
+GET http://{{host}}/test/debugging
+Accept: application/json
+Content-Type: application/vnd.api+json
+Cookie: XDEBUG_SESSION=PHPSTORM
+X-Request-Id: 123
+X-Service-Referrer: dynamicus
+X-Country-Code: UA
+X-Debugging: on
+
+###

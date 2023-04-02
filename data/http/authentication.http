@@ -1,0 +1,11 @@
+GET http://{{host}}/test/authentication
+Accept: application/json
+Content-Type: application/vnd.api+json
+Cookie: XDEBUG_SESSION=PHPSTORM
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJqdGkiOiJjNDUxMjU4YjlhZTMzYjQ3MjIxN2FmZjc3YjY4MWY4ZiIsImlhdCI6MTYxOTM2ODM2OCwidWlkIjoyLCJyb2xlIjoiYWRtaW4ifQ.F4erdcJkoFCvlI0UiSquarOqv52uncEom-dhDEQODfW585zSC_LRBMe-0xNTXlz_Cb3io20pNaAMt1muxjVOLiM9WaGWmqQauMC8vWpVnArAjUlL5AtshdjNQI9tCbfsdEZZuCSYfdT0TpmukFKlnyKbRbB2EEPnK6vQCPSOdwE
+X-Request-Id: 123
+X-Service-Referrer: dynamicus
+X-Country-Code: UA
+X-Debugging: on
+
+###

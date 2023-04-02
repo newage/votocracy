@@ -1,0 +1,21 @@
+GET http://{{host}}/test/api/application/1
+Accept: application/json
+Content-Type: application/hal+json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+###
+GET http://{{host}}/test/api/applications/?page=1&limit=2
+Accept: application/json
+Content-Type: application/hal+json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+###
+POST http://{{host}}/test/api/applications
+Accept: application/json
+Content-Type: application/json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+{
+  "message": "test message",
+  "status": "wrong"
+}

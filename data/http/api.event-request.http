@@ -1,0 +1,11 @@
+POST http://{{host}}/test/api/event-produce/
+Accept: application/json
+Content-Type: application/hal+json
+Cookie: XDEBUG_SESSION=PHPSTORM
+
+###
+
+GET http://{{host}}/test/api/event-consume/
+Accept: application/json
+Content-Type: application/hal+json
+Cookie: XDEBUG_SESSION=PHPSTORM

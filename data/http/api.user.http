@@ -1,0 +1,4 @@
+GET http://{{host}}/test/api/user/1
+Accept: application/json
+Content-Type: application/hal+json
+Cookie: XDEBUG_SESSION=PHPSTORM

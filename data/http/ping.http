@@ -1,0 +1,15 @@
+GET http://{{host}}/test/api/ping/
+Accept: application/hal+json
+Content-Type: application/vnd.api+json
+Cookie: XDEBUG_SESSION=PHPSTORM
+X-Request-Id: 123
+
+###
+
+GET http://{{host}}/test/api/entity/
+Accept: application/hal+json
+Content-Type: application/vnd.api+json
+Cookie: XDEBUG_SESSION=PHPSTORM
+X-Request-Id: 123
+
+###
