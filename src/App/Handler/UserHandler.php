@@ -32,7 +32,7 @@ class UserHandler implements RequestHandlerInterface
 
         $entity = new User();
         $entity->setId(1);
-        $entity->setName('test');
+        $entity->setEmail('test');
 
         $adapter = new ArrayAdapter([
             (new Application())

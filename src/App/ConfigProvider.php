@@ -47,11 +47,7 @@ class ConfigProvider
                 Handler\AuthenticationHandler::class => Handler\AuthenticationHandler::class,
             ],
             'factories'  => [
-                Handler\EntityHandler::class => Factory\EntityHandlerFactory::class,
                 Handler\DebuggingHandler::class => Factory\DebuggingHandlerFactory::class,
-                Handler\ApplicationHandler::class => Factory\ApplicationHandlerFactory::class,
-                Handler\ApplicationsGetHandler::class => Factory\ApplicationsGetHandlerFactory::class,
-                Handler\ApplicationsPostHandler::class => Factory\ApplicationsPostHandlerFactory::class,
                 Handler\UserHandler::class => Factory\UserHandlerFactory::class,
                 Handler\EventProduceHandler::class => Factory\EventProduceFactory::class,
                 Handler\EventConsumeHandler::class => Factory\EventConsumeFactory::class,
