@@ -35,7 +35,7 @@ $config = new ConfigurationArray([
     ],
 
     'migrations_paths' => [
-        'App\Migrations' => __DIR__ . '/src/App/Migrations',
+        'Votocracy\Migrations' => __DIR__ . '/src/Votocracy/Migrations',
     ],
 
     'all_or_nothing' => true,
@@ -47,7 +47,7 @@ $config = new ConfigurationArray([
 ]);
 
 $dependencyFactory = DependencyFactory::fromConnection($config, new ExistingConnection($connection));
-$schemaProvider = new \App\Migrations\Provider\VotocracyDatabaseProvider();
+$schemaProvider = new \Votocracy\Migrations\Provider\DatabaseProvider();
 $dependencyFactory->setDefinition(\Doctrine\Migrations\Provider\SchemaProvider::class, static fn () => $schemaProvider);
 
 $cli = new Application('Doctrine Migrations');

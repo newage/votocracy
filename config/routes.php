@@ -40,32 +40,23 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
     $app->get('/metrics[/]', Common\Handler\MetricsHandler::class, 'metrics');
 
     /* this routes for test */
-    $app->get('/test/logging[/]', App\Handler\LoggingHandler::class, 'test.logging');
-    $app->get('/test/debugging[/]', App\Handler\DebuggingHandler::class, 'test.debugging');
-    $app->get('/test/api/ping[/]', App\Handler\PingHandler::class, 'api.ping');
-    $app->get('/test/api/entity[/]', App\Handler\EntityHandler::class, 'api.entity');
-    $app->get('/test/api/user/{id}[/]', App\Handler\UserHandler::class, 'test.api.get.user')
+    $app->get('/test/logging[/]', Votocracy\Handler\LoggingHandler::class, 'test.logging');
+    $app->get('/test/debugging[/]', Votocracy\Handler\DebuggingHandler::class, 'test.debugging');
+    $app->get('/test/api/ping[/]', Votocracy\Handler\PingHandler::class, 'api.ping');
+    $app->get('/test/api/user/{id}[/]', Votocracy\Handler\UserHandler::class, 'test.api.get.user')
         ->setOptions([
             'tokens' => [
                 'id' => '\d+',
             ],
         ]);
-    $app->get('/test/api/application/{id}[/]', App\Handler\ApplicationHandler::class, 'test.api.get.application')
-        ->setOptions([
-            'tokens' => [
-                'id' => '\d+',
-            ],
-        ]);
-    $app->get('/test/api/applications[/]', App\Handler\ApplicationsGetHandler::class, 'test.api.get.applications');
-    $app->post('/test/api/applications[/]', App\Handler\ApplicationsPostHandler::class, 'test.api.post.applications');
     $app->get(
         '/test/authentication[/]',
         [
             Common\Middleware\JwtMiddleware::class,
-            App\Handler\AuthenticationHandler::class,
+            Votocracy\Handler\AuthenticationHandler::class,
         ],
         'test.authentication'
     );
-    $app->post('/test/api/event-produce[/]', App\Handler\EventProduceHandler::class, 'test.api.event-produce');
-    $app->get('/test/api/event-consume[/]', App\Handler\EventConsumeHandler::class, 'test.api.event-consume');
+    $app->post('/test/api/event-produce[/]', Votocracy\Handler\EventProduceHandler::class, 'test.api.event-produce');
+    $app->get('/test/api/event-consume[/]', Votocracy\Handler\EventConsumeHandler::class, 'test.api.event-consume');
 };

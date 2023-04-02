@@ -1,10 +1,11 @@
 {
-    "name": "englishdom/service-skeleton",
-    "description": "Skeleton for englishdom's service based on mezzio framework",
+    "name": "newage/votocracy",
+    "description": "Service for providing elections and voting",
     "type": "project",
-    "license": "BSD-3-Clause",
+    "license": "MIT",
     "keywords": [
-        "skeleton",
+        "voting",
+        "elections",
         "middleware",
         "psr",
         "psr-7",
@@ -80,13 +81,13 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/App/",
+            "Votocracy\\": "src/Votocracy/",
             "Common\\": "library/Common/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "AppTest\\": "test/unit/AppTest/"
+            "VotocracyTest\\": "test/unit/VotocracyTest/"
         }
     },
     "scripts": {

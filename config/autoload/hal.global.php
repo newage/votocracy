@@ -1,7 +1,7 @@
 <?php
 
 use Laminas\Hydrator\ClassMethodsHydrator;
-use App\Entity;
+use Votocracy\Entity;
 use Mezzio\Hal\Metadata\MetadataMap;
 use Mezzio\Hal\Metadata\RouteBasedCollectionMetadata;
 use Mezzio\Hal\Metadata\RouteBasedResourceMetadata;
